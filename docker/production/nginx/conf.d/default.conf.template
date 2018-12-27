@@ -5,7 +5,7 @@ server {
   root   /app/public;
 
   location / {
-    try_files $uri /dev/null =404 @proxy;
+    try_files $uri @proxy;
   }
 
   location = /favicon.ico {

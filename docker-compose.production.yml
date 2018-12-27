@@ -25,17 +25,16 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql/data:delegated
 
-  # nginx:
-  #   build:
-  #     context: ./docker/production/nginx
-  #     args:
-  #       WEBAPP_HOST:  http://web:3000
-  #     dockerfile: ./Dockerfile
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - web
-  #   network_mode: host
+  nginx:
+    build:
+      context: ./docker/production/nginx
+      args:
+        WEBAPP_HOST:  http://web:3000
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - web
 
   redis:
     image: redis
