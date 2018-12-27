@@ -3,6 +3,8 @@ services:
   web:
     build:
       context: ./
+      args:
+        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
       dockerfile: ./docker/Dockerfile
     container_name: web
     stdin_open: true
@@ -16,8 +18,8 @@ services:
       - "3000:3000"
     depends_on:
       - db
-    # env_file:
-    #   - web.env
+    environment:
+      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
 
   db:
     image: postgres:9.5.9
@@ -30,6 +32,7 @@ services:
     image: redis
     # ports:
     #   - "6379:6379"
+
   mailcatcher:
     image: schickling/mailcatcher
     ports:

@@ -3,19 +3,20 @@ services:
   web:
     build:
       context: ./
-      dockerfile: ./docker/production/Dockerfile
+      args:
+        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      dockerfile: ./docker/production/rails/Dockerfile
     container_name: web
-    command: "bundle exec rails server -p 3000 -b 0.0.0.0"
+    command: 'bash -c "bundle exec rake db:migrate && bundle exec rails server -p 3000 -b 0.0.0.0"'
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
       RAILS_ENV: production
+      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
       RAILS_LOG_TO_STDOUT: "true"
       NODE_ENV: production
-    # env_file:
-    #   - web.env
 
   db:
     image: postgres:9.5.9
@@ -23,6 +24,18 @@ services:
     #   - "5432:5432"
     volumes:
       - postgresql:/var/lib/postgresql/data:delegated
+
+  # nginx:
+  #   build:
+  #     context: ./docker/production/nginx
+  #     args:
+  #       WEBAPP_HOST:  http://web:3000
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - web
+  #   network_mode: host
 
   redis:
     image: redis
