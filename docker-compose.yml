@@ -9,7 +9,7 @@ services:
     container_name: web
     stdin_open: true
     tty: true
-    command: "bash ./docker/entrypoint.sh"
+    command: "bash ./docker/development/entrypoint.sh"
     volumes:
       - .:/app:delegated
       - bundle:/usr/local/bundle:delegated
