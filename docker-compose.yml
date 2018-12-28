@@ -20,6 +20,35 @@ services:
       - db
     environment:
       RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      # sidekiq redis
+      # https://github.com/mperham/sidekiq/wiki/Using-Redis
+      REDIS_PROVIDER: REDISGREEN_URL
+      REDISGREEN_URL: redis://redis:6379/0
+
+  worker:
+    build:
+      context: ./
+      args:
+        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      dockerfile: ./docker/development/Dockerfile
+    container_name: worker
+    stdin_open: true
+    tty: true
+    command: bundle exec sidekiq -q default -q mailers
+    volumes:
+      - .:/app:delegated
+      - bundle:/usr/local/bundle:delegated
+      - node_modules:/app/node_modules:delegated
+    # ports:
+    #   - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      # sidekiq redis
+      # https://github.com/mperham/sidekiq/wiki/Using-Redis
+      REDIS_PROVIDER: REDISGREEN_URL
+      REDISGREEN_URL: redis://redis:6379/0
 
   db:
     image: postgres:9.5.9
