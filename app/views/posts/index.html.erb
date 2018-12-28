@@ -12,6 +12,7 @@
       <tr>
         <th>Title</th>
         <th>Body</th>
+        <th>Count words</th>
         <th></th>
         <th></th>
         <th></th>
@@ -26,6 +27,9 @@
         </td>
         <td>
           <%= post.body %>
+        </td>
+        <td>
+          <%= post.count_words %>
         </td>
         <td>
           <%= link_to 'Show', post %>
