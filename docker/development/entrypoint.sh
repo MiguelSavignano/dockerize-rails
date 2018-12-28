@@ -1,3 +1,4 @@
+bundle check || bundle install
 rake db:create db:migrate
 rm -f tmp/pids/server.pid
 rm -rf public/packs/* || true && bin/webpack-dev-server &

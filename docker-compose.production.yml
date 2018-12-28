@@ -16,6 +16,30 @@ services:
       RAILS_ENV: production
       RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
       RAILS_LOG_TO_STDOUT: "true"
+      # sidekiq redis
+      # https://github.com/mperham/sidekiq/wiki/Using-Redis
+      REDIS_PROVIDER: REDISGREEN_URL
+      REDISGREEN_URL: redis://redis:6379/0
+      NODE_ENV: production
+
+  worker:
+    build:
+      context: ./
+      args:
+        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      dockerfile: ./docker/production/rails/Dockerfile
+    container_name: worker
+    command: bundle exec sidekiq -q default -q mailers
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: production
+      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      RAILS_LOG_TO_STDOUT: "true"
+      # sidekiq redis
+      # https://github.com/mperham/sidekiq/wiki/Using-Redis
+      REDIS_PROVIDER: REDISGREEN_URL
+      REDISGREEN_URL: redis://redis:6379/0
       NODE_ENV: production
 
   db:
