@@ -53,17 +53,19 @@ services:
     build:
       context: ./docker/production/nginx
       args:
-        WEBAPP_HOST:  http://web:3000
+        WEBAPP_HOST:  http://localhost:3000
       dockerfile: ./Dockerfile
     ports:
-      - "8080:80"
+      - "80"
     depends_on:
       - web
+    network_mode: "host"
 
   redis:
     image: redis
     # ports:
     #   - "6379:6379"
+
   mailcatcher:
     image: schickling/mailcatcher
     ports:
