@@ -5,7 +5,7 @@ services:
       context: ./
       args:
         RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/development/Dockerfile
     container_name: web
     stdin_open: true
     tty: true
