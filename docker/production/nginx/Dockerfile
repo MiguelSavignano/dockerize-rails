@@ -1,4 +1,4 @@
-FROM rails-docker_web:latest as rails
+FROM dockerize-rails-production:latest as rails
 
 FROM nginx:1.15-alpine
 
