@@ -6,6 +6,7 @@ services:
       args:
         RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
       dockerfile: ./docker/production/rails/Dockerfile
+    image: rails-docker-production
     container_name: web
     command: 'bash -c "bundle exec rake db:migrate && bundle exec rails server -p 3000 -b 0.0.0.0"'
     ports:
@@ -23,11 +24,7 @@ services:
       NODE_ENV: production
 
   worker:
-    build:
-      context: ./
-      args:
-        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
-      dockerfile: ./docker/production/rails/Dockerfile
+    image: rails-docker-production
     container_name: worker
     command: bundle exec sidekiq -q default -q mailers
     depends_on:
