@@ -17,5 +17,17 @@ all docker commands sync in minikube
 ./docker/production/dockerbuild.sh
 ```
 
-kubectl expose deployment rails-nginx --type=NodePort
 
+## Create stack on minikube
+
+```
+./docker/kubernetes/scripts/set-config-map.sh
+./docker/kubernetes/scripts/set-secrets.sh.sh
+./docker/kubernetes/scripts/set-workloads.sh
+./docker/kubernetes/scripts/set-services.sh
+```
+
+## Open rails server in browser
+```
+minikube service rails-nginx --url
+```
