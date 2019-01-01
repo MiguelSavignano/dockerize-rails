@@ -11,3 +11,10 @@ docker build \
   -t dockerize-nginx-production \
   -f ./docker/production/nginx/Dockerfile \
   ./docker/production/nginx
+
+DOCKERHUB_USERNAME=devmasx
+docker tag dockerize-rails-production ${DOCKERHUB_USERNAME}/dockerize-rails-production
+docker tag dockerize-nginx-production ${DOCKERHUB_USERNAME}/dockerize-nginx-production
+
+docker push ${DOCKERHUB_USERNAME}/dockerize-rails-production
+docker push ${DOCKERHUB_USERNAME}/dockerize-nginx-production

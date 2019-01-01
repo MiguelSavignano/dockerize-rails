@@ -15,12 +15,10 @@ spec:
         app: rails-nginx
     spec:
       containers:
-      - image: dockerize-nginx-production
+      - image: devmasx/dockerize-nginx-production
         name: nginx
-        imagePullPolicy: "Never"
-      - image: dockerize-rails-production
+      - image: devmasx/dockerize-rails-production
         name: rails
-        imagePullPolicy: "Never"
         envFrom:
         - configMapRef:
             name: rails-config

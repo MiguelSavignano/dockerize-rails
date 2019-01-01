@@ -71,5 +71,4 @@ COPY --from=builder /app/vendor /app/vendor
 COPY --from=builder /app/public /app/public
 COPY --from=builder /app/config.ru app/Gemfile app/Gemfile.lock app/Rakefile /app/
 
-
 CMD [ "sh", "-c", "bundle exec rake db:create db:migrate && bundle exec rails server -b 0.0.0.0" ]
