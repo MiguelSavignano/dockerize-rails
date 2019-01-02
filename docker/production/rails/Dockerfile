@@ -43,8 +43,16 @@ FROM ruby:2.5.1-slim
 
 ENV NODE_ENV=production RAILS_ENV=production RAILS_LOG_TO_STDOUT=true
 
-# system dependencies (rails need javascript runtime)
-RUN apt-get update -qq && apt-get install -y libpq-dev nodejs \
+# Install Nodejs 10.13.0 and Yarn 1.10.1 (rails need javascript runtime)
+ENV NODE_VERSION 10.13.0
+ENV YARN_VERSION 1.10.1
+COPY --from=nodejs /usr/local/bin/ /usr/local/bin/
+COPY --from=nodejs /usr/local/lib/ /usr/local/lib/
+COPY --from=nodejs /opt/yarn-v1.10.1/ /opt/yarn-v1.10.1/
+WORKDIR /app
+
+# system dependencies
+RUN apt-get update -qq && apt-get install -y libpq-dev \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -62,6 +70,5 @@ COPY --from=builder /app/storage /app/storage
 COPY --from=builder /app/vendor /app/vendor
 COPY --from=builder /app/public /app/public
 COPY --from=builder /app/config.ru app/Gemfile app/Gemfile.lock app/Rakefile /app/
-
 
 CMD [ "sh", "-c", "bundle exec rake db:create db:migrate && bundle exec rails server -b 0.0.0.0" ]

@@ -1,24 +1,17 @@
-# README
+# Rails docker image for production
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Rails dockerfile example
+[Dockerfile](https://github.com/MiguelSavignano/rails-docker-production/tree/master/docker/production/rails/Dockerfile)
 
-Things you may want to cover:
+## Nginx dockerfile example
+[Dockerfile](https://github.com/MiguelSavignano/rails-docker-production/tree/master/docker/production/nginx/Dockerfile)
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## build images
+```
+bin/docker-build
+```
+## run images
+```
+bin/docker-run-production
+```
