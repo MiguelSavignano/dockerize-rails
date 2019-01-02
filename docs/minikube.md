@@ -28,6 +28,17 @@ all docker commands sync in minikube
 ```
 
 ## Open rails server in browser
+
 ```
-minikube service rails-nginx --url
+minikube service rails-nginx
+```
+
+## Ingress http
+
+```
+minikube addons enable ingress
+```
+
+```
+kubectl apply -f docker/kubernetes/ingress/ingress-http.yaml
 ```
