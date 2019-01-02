@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    app: rails-worker
+  name: rails-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rails-worker
+  template:
+    metadata:
+      labels:
+        app: rails-worker
+    spec:
+      containers:
+      - image: devmasx/dockerize-rails-production
+        name: rails-worker
+        command: ['bundle', 'exec', 'sidekiq', '-q', 'default']
+        envFrom:
+        - configMapRef:
+            name: rails-config
+        - secretRef:
+            name: rails-secrets
