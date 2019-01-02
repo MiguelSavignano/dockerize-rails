@@ -2,7 +2,7 @@
 
 Rails with docker stack, examples with nginx webserver, sidekiq worker, webpacker.
 
-Build diferent image for development and production image with optimizations.
+Build diferents images for development and production with optimizations.
 
 ## Stack
 
@@ -12,15 +12,16 @@ Build diferent image for development and production image with optimizations.
 | Framework                    | Rails | 5.2.1 |
 | Database                     | Postgres | 9.5.9 |
 | Cache service                | Redis    |  *   |
-| background processing        | sidekiq    |  5.2.3   |
-
+| Background processing        | Sidekiq    |  5.2.3   |
 
 ## Development mode
 
 In development mode don't use nginx webserver, compile assets with webpack dev server, and use persisted volume for live reload code.
 
-### Rails dockerfile example
+***Docker stack***
+
 [Dockerfile](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/development/Dockerfile)
+[docker-compose],(https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker-compose.yml)
 
 ### Start server and all services
 
@@ -28,15 +29,14 @@ In development mode don't use nginx webserver, compile assets with webpack dev s
 docker-compose up
 ```
 
-[See more](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/docker-development.md)
-
+[See more development configs](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/docker-development.md)
 
 ## Production mode
 
 In production mode use nginx webserver, compile assets, no live reload code.
 Configure for works in production and optimized docker image size.
 
-Enviroment variables
+***Enviroment variables***
 ```
 RAILS_ENV=production
 RAILS_LOG_TO_STDOUT="true"
@@ -49,17 +49,22 @@ DATABASE_HOST
 DATABASE_USERNAME
 DATABASE_PASSWORD
 ```
-## Docker image
-[Dockerfile](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/production/rails/Dockerfile)
 
-## Example using docker-compose
+***Docker stack***
 
-### Start server and all services
+[Docker images](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/production),
+[docker-compose.production](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker-compose.production.yml)
+
+### Example using docker-compose
+
+#### Start server and all services
 
 ```
 docker-compose -f docker-compose.production.yml up
 ```
 
-## Example using Kubernetes (minikube)
+### Example using Kubernetes (minikube)
 
-[See more](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/minikube.md)
+[Kubernetes objects (yaml)](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/kubernetes)
+
+[See minikube configuration](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/minikube.md)
