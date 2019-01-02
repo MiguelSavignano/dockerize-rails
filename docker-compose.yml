@@ -6,6 +6,7 @@ services:
       args:
         RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
       dockerfile: ./docker/development/Dockerfile
+    image: dockerize-rails
     container_name: web
     stdin_open: true
     tty: true
@@ -26,11 +27,7 @@ services:
       REDISGREEN_URL: redis://redis:6379/0
 
   worker:
-    build:
-      context: ./
-      args:
-        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
-      dockerfile: ./docker/development/Dockerfile
+    image: dockerize-rails
     container_name: worker
     stdin_open: true
     tty: true
@@ -75,11 +72,14 @@ volumes:
 
 # docker-compose up
 
-# enter in the container for run rails console or rake tasks
-# docker-compose run web bash
+# Run rails console
+# docker-compose run --rm web rails console
 
-# attach the container when use binding.pry
+# Enter in the container for run rails console or rake tasks
+# docker-compose run --rm web bash
+
+# Attach the container when use binding.pry
 # docker attach web
 
-# when run rails generator you need to run
-# sudo chown -R $USER:$USER $(ls | grep -v volumes)
+# When run rails generator then you must run
+# sudo chown -R $USER:$USER .

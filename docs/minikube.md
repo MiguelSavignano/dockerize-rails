@@ -16,7 +16,7 @@ all docker commands sync in minikube
 ```
 ./docker/production/dockerbuild.sh
 ```
-
+* Or use dockerhub repositories
 
 ## Create stack on minikube
 
@@ -37,6 +37,10 @@ minikube service rails-nginx
 
 ```
 minikube addons enable ingress
+```
+
+```
+echo "$(minikube ip) myminikube.info" | sudo tee -a /etc/hosts
 ```
 
 ```
