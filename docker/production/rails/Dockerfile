@@ -27,7 +27,7 @@ RUN bundle install -j 4 --without development test staging --deployment
 
 # Invalidate node_modules cache if package.json or yarn.lock
 COPY package.json yarn.lock /app/
-RUN npm ci
+RUN yarn install --pure-lockfile
 
 # Copy app and public folder
 COPY . .
