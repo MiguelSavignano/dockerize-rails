@@ -1,10 +1,8 @@
-version: '3'
+version: "3"
 services:
   web:
     build:
       context: ./
-      args:
-        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
       dockerfile: ./docker/development/Dockerfile
     image: dockerize-rails
     container_name: web
@@ -67,7 +65,6 @@ volumes:
   postgresql:
   bundle:
   node_modules:
-
 # USAGE
 
 # docker-compose up

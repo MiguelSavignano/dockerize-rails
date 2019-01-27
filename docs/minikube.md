@@ -13,18 +13,19 @@ eval $(minikube docker-env)
 ```
 
 all docker commands sync in minikube
+
 ```
 ./docker/production/dockerbuild.sh
 ```
-* Or use dockerhub repositories
+
+- Or use dockerhub repositories
 
 ## Create stack on minikube
 
 ```
 ./docker/kubernetes/scripts/set-config-map.sh
 ./docker/kubernetes/scripts/set-secrets.sh.sh
-./docker/kubernetes/scripts/set-workloads.sh
-./docker/kubernetes/scripts/set-services.sh
+./docker/kubernetes/scripts/setup.sh
 ```
 
 ## Open rails server in browser
