@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   web:
     build:
@@ -56,7 +56,7 @@ services:
     build:
       context: ./docker/production/nginx
       args:
-        WEBAPP_HOST:  http://localhost:3000
+        WEBAPP_HOST: http://localhost:3000
       dockerfile: ./Dockerfile
     image: dockerize-nginx-production
     ports:
@@ -78,7 +78,6 @@ services:
 
 volumes:
   postgresql:
-
 # USAGE
 
 # docker-compose up
