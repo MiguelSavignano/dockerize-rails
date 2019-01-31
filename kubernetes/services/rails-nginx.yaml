@@ -3,10 +3,12 @@ kind: Service
 metadata:
   name: rails-nginx
 spec:
-  type: NodePort
-  selector:
-    app: rails-nginx
   ports:
     - port: 80
       protocol: TCP
       targetPort: 80
+  selector:
+    app: rails-nginx
+  type: NodePort
+status:
+  loadBalancer: {}
