@@ -15,5 +15,5 @@ spec:
         app: redis
     spec:
       containers:
-      - image: redis:5.0.3
-        name: redis
+        - image: redis:5.0.3
+          name: redis

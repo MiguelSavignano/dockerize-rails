@@ -15,11 +15,11 @@ spec:
         app: rails-worker
     spec:
       containers:
-      - image: devmasx/dockerize-rails-production
-        name: rails-worker
-        command: ['bundle', 'exec', 'sidekiq', '-q', 'default']
-        envFrom:
-        - configMapRef:
-            name: rails-config
-        - secretRef:
-            name: rails-secrets
+        - image: devmasx/dockerize-rails-production
+          name: rails-worker
+          command: ["bundle", "exec", "sidekiq", "-q", "default"]
+          envFrom:
+            - configMapRef:
+                name: rails-config
+            - secretRef:
+                name: rails-secrets

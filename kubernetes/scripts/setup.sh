@@ -1,7 +1,7 @@
 # ./kubernetes/scripts/set-config-map.sh
 # ./kubernetes/scripts/set-secrets.sh
+# kubectl apply -f kubernetes/storage/postgres-storage.yaml
 kubectl apply \
-  -f kubernetes/storage/postgres-storage.yaml \
   -f kubernetes/workloads/postgres.yaml \
   -f kubernetes/workloads/redis.yaml \
   -f kubernetes/workloads/rails-nginx.yaml \

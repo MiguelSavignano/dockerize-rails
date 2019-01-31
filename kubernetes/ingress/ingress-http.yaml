@@ -9,10 +9,10 @@ spec:
     serviceName: default-http-backend
     servicePort: 80
   rules:
-  - host: myminikube.info
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: rails-nginx
-          servicePort: 80
+    - host: myminikube.info
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rails-nginx
+              servicePort: 80

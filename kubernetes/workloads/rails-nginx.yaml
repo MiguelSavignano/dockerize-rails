@@ -15,12 +15,12 @@ spec:
         app: rails-nginx
     spec:
       containers:
-      - image: devmasx/dockerize-nginx-production
-        name: nginx
-      - image: devmasx/dockerize-rails-production
-        name: rails
-        envFrom:
-        - configMapRef:
-            name: rails-config
-        - secretRef:
-            name: rails-secrets
+        - image: devmasx/dockerize-nginx-production
+          name: nginx
+        - image: devmasx/dockerize-rails-production
+          name: rails
+          envFrom:
+            - configMapRef:
+                name: rails-config
+            - secretRef:
+                name: rails-secrets
