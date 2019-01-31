@@ -1,5 +1,5 @@
-# ./docker/kubernetes/scripts/set-config-map.sh
-# ./docker/kubernetes/scripts/set-secrets.sh
+# ./kubernetes/scripts/set-config-map.sh
+# ./kubernetes/scripts/set-secrets.sh
 kubectl apply \
   -f kubernetes/storage/postgres-storage.yaml \
   -f kubernetes/workloads/postgres.yaml \
