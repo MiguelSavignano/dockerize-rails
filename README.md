@@ -69,3 +69,4 @@ docker-compose -f docker-compose.production.yml up
 [Kubernetes objects (yaml)](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/kubernetes)
 
 [See minikube configuration](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/minikube.md)
+.
