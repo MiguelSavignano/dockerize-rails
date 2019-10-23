@@ -18,4 +18,4 @@ jobs:
           ruby-version: 2.6.x
 
       - name: Brakeman
-        uses: MiguelSavignano/github-action-ruby-brakeman
+        uses: MiguelSavignano/github-action-ruby-brakeman@master
