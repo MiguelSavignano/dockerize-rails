@@ -6,19 +6,19 @@ Build diferents images for development and production with optimizations.
 
 ## Stack
 
-|                              | Name  | Versión
-|---|---|---|
-| Lang                         | Ruby  | 2.5.1 |
-| Framework                    | Rails | 5.2.1 |
-| Database                     | Postgres | 9.5.9 |
-| Cache service                | Redis    |  *   |
-| Background processing        | Sidekiq    |  5.2.3   |
+|                       | Name     | Versión |
+| --------------------- | -------- | ------- |
+| Lang                  | Ruby     | 2.5.1   |
+| Framework             | Rails    | 5.2.1   |
+| Database              | Postgres | 9.5.9   |
+| Cache service         | Redis    | \*      |
+| Background processing | Sidekiq  | 5.2.3   |
 
 ## Development mode
 
 In development mode don't use nginx webserver, compile assets with webpack dev server, and use persisted volume for live reload code.
 
-***Docker stack***
+**_Docker stack_**
 
 [Dockerfile](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/development/Dockerfile)
 [docker-compose],(https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker-compose.yml)
@@ -36,7 +36,8 @@ docker-compose up
 In production mode use nginx webserver, compile assets, no live reload code.
 Configure for works in production and optimized docker image size.
 
-***Enviroment variables***
+**_Enviroment variables_**
+
 ```
 RAILS_ENV=production
 RAILS_LOG_TO_STDOUT="true"
@@ -50,7 +51,7 @@ DATABASE_USERNAME
 DATABASE_PASSWORD
 ```
 
-***Docker stack***
+**_Docker stack_**
 
 [Docker images](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/production),
 [docker-compose.production](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker-compose.production.yml)
