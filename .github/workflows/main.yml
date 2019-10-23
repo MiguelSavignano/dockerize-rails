@@ -19,3 +19,5 @@ jobs:
 
       - name: Brakeman
         uses: MiguelSavignano/github-action-ruby-brakeman@master
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN_ACTION}}
