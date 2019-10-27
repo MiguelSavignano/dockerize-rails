@@ -21,3 +21,6 @@ jobs:
         uses: devmasx/github-action-ruby-brakeman@master
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_APP_TOKEN}}
+      - name: Fail
+        run: |
+          exit() 1
