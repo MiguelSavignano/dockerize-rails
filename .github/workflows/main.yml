@@ -17,6 +17,7 @@ jobs:
           ruby-version: 2.6.x
       - name: Install gems
         run: |
+          apt-get install -y postgresql-client libpq-dev
           bundle install
       - name: Brakeman report
         run: |
