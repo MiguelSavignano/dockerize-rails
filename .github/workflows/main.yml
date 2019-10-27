@@ -20,9 +20,7 @@ jobs:
       - name: Brakeman
         uses: devmasx/github-action-ruby-brakeman@master
         env:
-          BRAKEMAN_PEM: ${{secrets.BRAKEMAN_PEM}}
-          APP_INSTALLATION_ID: ${{secrets.APP_INSTALLATION_ID}}
-          APP_ID: ${{secrets. APP_ID}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Fail
         run: |
           exit() 1
