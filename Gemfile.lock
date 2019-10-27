@@ -57,6 +57,7 @@ GEM
     bootstrap-sass (3.4.0)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    brakeman (4.7.0)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.12.0)
@@ -227,6 +228,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-generators (~> 3.3.4)
   bootstrap-sass (~> 3.4.0)
+  brakeman
   byebug
   capybara (>= 2.15)
   chromedriver-helper
