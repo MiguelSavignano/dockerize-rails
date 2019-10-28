@@ -23,7 +23,7 @@ jobs:
           gem install brakeman
       - name: Brakeman report
         run: |
-          brakeman -f json > report.json || echo 'true'
+          brakeman -f json > report.json || exit 0
       - name: Brakeman
         uses: devmasx/github-action-ruby-brakeman@master
         env:
