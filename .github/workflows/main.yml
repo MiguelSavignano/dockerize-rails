@@ -8,8 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ruby:2.6.3-slim
+    # container:
+    #   image: ruby:2.6.3-slim
     steps:
       - uses: actions/checkout@v1
       - name: Install gems
