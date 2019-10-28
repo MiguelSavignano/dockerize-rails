@@ -16,10 +16,11 @@ jobs:
         run: |
           apt-get update
           apt-get install -y build-essential postgresql-client libpq-dev
-          bundle install
+          # bundle install
+          gem install brakeman
       - name: Brakeman report
         run: |
-          bundle exec brakeman -f json > /tmp/brakeman.json || 0
+          bundle exec brakeman -f json > /tmp/brakeman.json
       - name: Brakeman
         uses: devmasx/github-action-ruby-brakeman@master
         env:
