@@ -12,10 +12,6 @@ jobs:
       image: ruby:2.6.3-slim
     steps:
       - uses: actions/checkout@v1
-      # - name: Set up Ruby 2.6
-      # uses: actions/setup-ruby@v1
-      # with:
-      # ruby-version: 2.6.x
       - name: Install gems
         run: |
           apt-get update
@@ -23,7 +19,7 @@ jobs:
           bundle install
       - name: Brakeman report
         run: |
-          bundle exec brakeman report -f json > /tmp/brakeman.json
+          bundle exec brakeman -f json > /tmp/brakeman.json
       - name: Brakeman
         uses: devmasx/github-action-ruby-brakeman@master
         env:
