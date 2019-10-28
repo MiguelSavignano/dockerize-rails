@@ -23,7 +23,7 @@ jobs:
           bundle install
       - name: Brakeman report
         run: |
-          bundle exec brakeman report -json > /tmp/brakeman.json
+          bundle exec brakeman report -f json > /tmp/brakeman.json
       - name: Brakeman
         uses: devmasx/github-action-ruby-brakeman@master
         env:
