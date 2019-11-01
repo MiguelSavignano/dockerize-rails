@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new(params.permit!)
+    @post = Post.new(params.permit!)
   end
 
   # GET /posts/1/edit
