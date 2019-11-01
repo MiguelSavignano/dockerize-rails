@@ -4,7 +4,7 @@
 
 FROM node:10.16.3-slim as nodejs
 
-FROM ruby:2.5.6-slim as development
+FROM ruby:2.6.3-slim as development
 
 # Install common libs
 RUN apt-get update -qq && apt-get install -y \

@@ -43,6 +43,7 @@ gem 'bootstrap-generators', '~> 3.3.4'
 gem 'bootstrap-sass', '~> 3.4.0'
 gem 'sassc-rails', '>= 2.0.0'
 
+gem 'record_tag_helper'
 # jobs
 gem 'sidekiq'
 
