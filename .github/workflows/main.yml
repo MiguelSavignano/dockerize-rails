@@ -13,7 +13,7 @@ jobs:
       # - uses: actions/setup-ruby@v1
       #   with:
       #     ruby-version: '2.x'
-    - uses: actions/upload-artifact@master
-      with:
-        name: coverage-report
-        path: coverage
+      - uses: actions/upload-artifact@master
+        with:
+          name: coverage-report
+          path: coverage
