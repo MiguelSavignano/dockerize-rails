@@ -8,24 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ruby:2.6.3-slim
     steps:
       - uses: actions/checkout@v1
       # - uses: actions/setup-ruby@v1
       #   with:
       #     ruby-version: '2.x'
-      - name: Install gems
-        run: |
-          apt-get update
-          apt-get install -y build-essential postgresql-client libpq-dev
-          bundle install
-          # gem install brakeman
-      - name: Brakeman report
-        run: |
-          brakeman -f json > tmp/brakeman.json || exit 0
-      - name: Brakeman
-        uses: devmasx/brakeman-linter-action@summary-with-links
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          REPORT_PATH: tmp/brakeman.json
+    - uses: actions/upload-artifact@master
+      with:
+        name: coverage-report
+        path: coverage
