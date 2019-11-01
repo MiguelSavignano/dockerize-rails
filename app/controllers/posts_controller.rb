@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    User.where("#{params[:query]}")
   end
 
   # GET /posts/new
@@ -25,8 +26,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    eval(params)
     @post = Post.new(post_params)
-    eval(post_params)
 
     respond_to do |format|
       if @post.save
