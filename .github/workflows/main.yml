@@ -13,12 +13,12 @@ jobs:
       # - uses: actions/setup-ruby@v1
       #   with:
       #     ruby-version: '2.x'
-      - uses: actions/download-artifact@master
+      - uses: actions/upload-artifact@master
         with:
           name: coverage-report
-          path: last-coverage
+          path: coverage
       # - uses: devmasx/coverage-check-action@master
       #   with:
       #     name: ruby-simplecov
       #     path: coverage/.last_run.json
-      - run: cat last-coverage/.last_run.json
+      - run: cat coverage/.last_run.json
