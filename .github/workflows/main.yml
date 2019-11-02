@@ -19,8 +19,8 @@ jobs:
           path: coverage
       - run: cat coverage/.last_run.json
       - uses: devmasx/coverage-check-action@coverage-check
-        env:
-          RESULT_PATH: coverage/.last_run.json
-          TOKEN: ${{secrets.GITHUB_TOKEN}}
-          TYPE: simplecov
-          MIN_COVERAGE: 80
+        with:
+          result_path: coverage/.last_run.json
+          token: ${{secrets.GITHUB_TOKEN}}
+          type: simplecov
+          min_coverage: 80
