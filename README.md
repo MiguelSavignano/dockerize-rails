@@ -71,3 +71,4 @@ docker-compose -f docker-compose.production.yml up
 [See minikube configuration](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/minikube.md)
 ..
 .
+.
