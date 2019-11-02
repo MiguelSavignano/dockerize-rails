@@ -17,6 +17,7 @@ jobs:
         with:
           name: coverage-report
           path: coverage
+      - run: cat coverage/.last_run.json
       - uses: devmasx/coverage-check-action@coverage-check
         env:
           INPUT_TOKEN: ${{secrets.GITHUB_TOKEN}}
