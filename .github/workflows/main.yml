@@ -17,7 +17,9 @@ jobs:
         with:
           name: coverage-report
           path: coverage
-      # - uses: devmasx/coverage-check-action@master
+      - uses: ./coverage-check-action
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       #   with:
       #     name: ruby-simplecov
       #     path: coverage/.last_run.json
