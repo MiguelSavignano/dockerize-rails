@@ -13,7 +13,7 @@ jobs:
       # - uses: actions/setup-ruby@v1
       #   with:
       #     ruby-version: '2.x'
-      - uses: actions/dawload-artifact@master
+      - uses: actions/download-artifact@master
         with:
           name: coverage-report
           path: last-coverage
