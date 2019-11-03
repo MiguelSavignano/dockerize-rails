@@ -1,14 +1,18 @@
-version: "3"
+version: "3.4"
 services:
   web:
     build:
+      args:
+        BUNDLE_DEPLOYMENT: "false"
+        BUNDLE_WITHOUT: ""
+        NODE_ENV: development
+      target: development
       context: ./
-      dockerfile: ./docker/development/Dockerfile
+      dockerfile: ./Dockerfile
     image: dockerize-rails
     container_name: web
     stdin_open: true
     tty: true
-    command: "bash ./docker/development/entrypoint.sh"
     volumes:
       - .:/app:delegated
       - bundle:/usr/local/bundle:delegated
@@ -18,7 +22,7 @@ services:
     depends_on:
       - db
     environment:
-      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      DATABASE_HOST: db
       # sidekiq redis
       # https://github.com/mperham/sidekiq/wiki/Using-Redis
       REDIS_PROVIDER: REDISGREEN_URL
@@ -45,15 +49,15 @@ services:
 
   db:
     image: postgres:9.5.9
-    # ports:
-    #   - "5432:5432"
+    ports:
+      - "5432:5432"
     volumes:
       - postgresql:/var/lib/postgresql/data:delegated
 
   redis:
     image: redis
-    # ports:
-    #   - "6379:6379"
+    ports:
+      - "6379:6379"
 
   mailcatcher:
     image: schickling/mailcatcher
@@ -67,6 +71,20 @@ volumes:
   node_modules:
 # USAGE
 
+# ************************************
+# **Start only external services (web service use local environment)**
+# ************************************
+
+# docker-compose up db redis mailcatcher
+# bundle exec rails server
+# bundle exec bundle exec sidekiq -q default -q mailers
+# bin/webpack-dev-server
+
+# ************************************
+# **Development on ruby docker image**
+# ************************************
+
+# docker-compose buid web
 # docker-compose up
 
 # Run rails console
@@ -75,7 +93,7 @@ volumes:
 # Enter in the container for run rails console or rake tasks
 # docker-compose run --rm web bash
 
-# Attach the container when use binding.pry
+# Attach the container when use byebug or binding.pry
 # docker attach web
 
 # When run rails generator then you must run
