@@ -1,6 +1,6 @@
 name: Merge in develop
 
-on: label
+on: issue_comment
 
 jobs:
   build:
