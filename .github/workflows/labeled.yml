@@ -1,8 +1,9 @@
 name: Merge in develop
 
 on:
-  issues:
-    types: [labeled]
+  push:
+    branches:
+      - "*"
 
 jobs:
   build:
