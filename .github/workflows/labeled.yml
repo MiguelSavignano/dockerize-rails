@@ -1,9 +1,6 @@
 name: Merge in develop
 
-on:
-  push:
-    branches:
-      - "*"
+on: label
 
 jobs:
   build:
