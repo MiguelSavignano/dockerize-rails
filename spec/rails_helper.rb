@@ -2,6 +2,9 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
+require 'simplecov-lcov'
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
 SimpleCov.start
 
 require File.expand_path('../config/environment', __dir__)
