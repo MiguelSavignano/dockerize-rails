@@ -1,0 +1,14 @@
+name: Merge in develop
+
+on: issues
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: devmasxtest/merge-command-action
+        # if: contains(github.ref, 'refs/tags/v')
+        # run: |
+        # cat ${GITHUB_EVENT_PATH}
