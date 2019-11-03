@@ -13,14 +13,13 @@ jobs:
       # - uses: actions/setup-ruby@v1
       #   with:
       #     ruby-version: '2.x'
-      - uses: actions/upload-artifact@master
+      # - uses: actions/upload-artifact@master
+      #   with:
+      #     name: coverage-report
+      #     path: coverage
+      - uses: devmasx/coverage-check-action@lcov-report
         with:
-          name: coverage-report
-          path: coverage
-      - run: cat coverage/.last_run.json
-      - uses: devmasx/coverage-check-action@v1.0.0
-        with:
-          result_path: coverage/.last_run.json
+          result_path: coverage/lcov/dockerize-rails.lcov
           token: ${{secrets.GITHUB_TOKEN}}
-          type: simplecov
+          type: lcov
           min_coverage: 90
