@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: devmasxtest/merge-command-action@master
-      - name: Event
+      - uses: actions/checkout@v1
+      - uses: devmasxtest/merge-command-action
         # if: contains(github.ref, 'refs/tags/v')
         # run: |
         # cat ${GITHUB_EVENT_PATH}
