@@ -1,70 +1,24 @@
-# Dockerize Rails
+# README
 
-Rails with docker stack, examples with nginx webserver, sidekiq worker, webpacker.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Build diferents images for development and production with optimizations.
+Things you may want to cover:
 
-## Stack
+* Ruby version
 
-|                              | Name  | Versión
-|---|---|---|
-| Lang                         | Ruby  | 2.5.1 |
-| Framework                    | Rails | 5.2.1 |
-| Database                     | Postgres | 9.5.9 |
-| Cache service                | Redis    |  *   |
-| Background processing        | Sidekiq    |  5.2.3   |
+* System dependencies
 
-## Development mode
+* Configuration
 
-In development mode don't use nginx webserver, compile assets with webpack dev server, and use persisted volume for live reload code.
+* Database creation
 
-***Docker stack***
+* Database initialization
 
-[Dockerfile](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/development/Dockerfile)
-[docker-compose],(https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker-compose.yml)
+* How to run the test suite
 
-### Start server and all services
+* Services (job queues, cache servers, search engines, etc.)
 
-```
-docker-compose up
-```
+* Deployment instructions
 
-[See more development configs](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/docker-development.md)
-
-## Production mode
-
-In production mode use nginx webserver, compile assets, no live reload code.
-Configure for works in production and optimized docker image size.
-
-***Enviroment variables***
-```
-RAILS_ENV=production
-RAILS_LOG_TO_STDOUT="true"
-NODE_ENV=production
-REDIS_PROVIDER=REDISGREEN_URL
-
-REDISGREEN_URL
-RAILS_MASTER_KEY
-DATABASE_HOST
-DATABASE_USERNAME
-DATABASE_PASSWORD
-```
-
-***Docker stack***
-
-[Docker images](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/production),
-[docker-compose.production](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker-compose.production.yml)
-
-### Example using docker-compose
-
-#### Start server and all services
-
-```
-docker-compose -f docker-compose.production.yml up
-```
-
-### Example using Kubernetes (minikube)
-
-[Kubernetes objects (yaml)](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docker/kubernetes)
-
-[See minikube configuration](https://github.com/MiguelSavignano/dockerize-rails/tree/master/docs/minikube.md)
+* ...

@@ -41,7 +41,7 @@ services:
     depends_on:
       - db
     environment:
-      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      RAILS_MASTER_KEY: 4ddc3f115f00ee39976a014827314652
       # sidekiq redis
       # https://github.com/mperham/sidekiq/wiki/Using-Redis
       REDIS_PROVIDER: REDISGREEN_URL

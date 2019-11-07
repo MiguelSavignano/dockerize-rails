@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       args:
-        RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+        RAILS_MASTER_KEY: 4ddc3f115f00ee39976a014827314652
       dockerfile: ./docker/production/rails/Dockerfile
     image: dockerize-rails-production
     container_name: web
@@ -15,7 +15,7 @@ services:
       - db
     environment:
       RAILS_ENV: production
-      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      RAILS_MASTER_KEY: 4ddc3f115f00ee39976a014827314652
       DATABASE_HOST: db
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: ""
@@ -34,7 +34,7 @@ services:
       - db
     environment:
       RAILS_ENV: production
-      RAILS_MASTER_KEY: ea3aaacc43f832b6e9049e61211561dc
+      RAILS_MASTER_KEY: 4ddc3f115f00ee39976a014827314652
       DATABASE_HOST: db
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: ""
