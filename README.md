@@ -15,3 +15,9 @@ gcloud beta container --project $PROJECT_ID clusters create "docker-rails-cluste
 ```
 kubectl apply -f kubernetes/rails-nginx.yaml
 ```
+
+## Deploy
+
+```
+kubectl set image deployment/rails-nginx rails=devmasx/devmasx/rails-sqlite:latest
+```

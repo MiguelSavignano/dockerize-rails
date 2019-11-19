@@ -6,6 +6,8 @@
 
 .git
 Dockerfile
+dockerbuild.sh
+README.md
 # Ignore bundler config.
 /.bundle
 
