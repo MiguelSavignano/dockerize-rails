@@ -1,3 +1,5 @@
+set -e
+
 IMAGE_NAME=devmasx/rails-sqlite
 GIT_HASH=`git rev-parse --short HEAD`
 
