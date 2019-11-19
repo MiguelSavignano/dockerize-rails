@@ -51,8 +51,7 @@ CMD "./entrypoint.sh"
 
 FROM development as production-builder
 
-ENV RAILS_ENV=production
-
+ENV RAILS_ENV=production SECRET_KEY_BASE=1
 # Build production assets
 RUN bundle exec rails assets:precompile
 
@@ -76,10 +75,14 @@ RUN apt-get update -qq && apt-get install -y \
 
 WORKDIR /app
 
-RUN groupadd -r deploy && useradd -r -g deploy deploy
-USER deploy
+# RUN groupadd -r deploy && useradd -r -g deploy deploy
+# USER deploy
 
-COPY --from=production-builder --chown=deploy:deploy /usr/local/bundle /usr/local/bundle
-COPY --from=production-builder --chown=deploy:deploy /app /app
+# COPY --from=production-builder --chown=deploy:deploy /usr/local/bundle /usr/local/bundle
+# COPY --from=production-builder --chown=deploy:deploy /app /app
+ENV SECRET_KEY_BASE=1
+
+COPY --from=production-builder /usr/local/bundle /usr/local/bundle
+COPY --from=production-builder /app /app
 
 CMD [ "sh", "-c", "bundle exec rake db:create db:migrate && bundle exec rails server -b 0.0.0.0" ]

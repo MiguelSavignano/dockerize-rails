@@ -1,0 +1,44 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rails-nginx
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: rails-nginx
+status:
+  loadBalancer: {}
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    app: rails-nginx
+  name: rails-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rails-nginx
+  template:
+    metadata:
+      labels:
+        app: rails-nginx
+    spec:
+      containers:
+        # - image: devmasx/nginx-rails-sqlite
+        #   name: nginx
+        - image: devmasx/rails-sqlite
+          name: rails
+          env:
+            - name: SECRET_KEY_BASE
+              value: "88bd35ae12965db0f0018e8c70849263fd7f2f176d586912c71b106f0a5adf7c7826b28184b57ac194a4c7ff41fedbd12f310c930dc9ec901485089fc95cc848"
+          # envFrom:
+          #   - configMapRef:
+          #       name: rails-config
+          #   - secretRef:
+          #       name: rails-secrets
