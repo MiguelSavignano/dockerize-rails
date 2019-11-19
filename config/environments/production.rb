@@ -84,6 +84,7 @@ Rails.application.configure do
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    Rails.logger.progname = "rails" if Rails.logger.respond_to?('progname')
   end
 
   # Do not dump schema after migrations.
