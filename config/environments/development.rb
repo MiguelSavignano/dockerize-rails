@@ -56,7 +56,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
     # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = LoggerJsonFormatter.new
+  # config.log_formatter = LoggerJsonFormatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
@@ -65,7 +65,7 @@ Rails.application.configure do
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.logger    = logger
   end
 
   # Raises error for missing translations.
