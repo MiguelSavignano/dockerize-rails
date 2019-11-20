@@ -56,7 +56,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
     # Use default logging formatter so that PID and timestamp are not suppressed.
-  # config.log_formatter = LoggerJsonFormatter.new
+  config.log_formatter = LoggerJsonFormatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
