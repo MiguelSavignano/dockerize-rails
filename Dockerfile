@@ -53,7 +53,7 @@ FROM development as production-builder
 
 ENV RAILS_ENV=production SECRET_KEY_BASE=1
 # Build production assets
-RUN bundle exec rails assets:precompile
+# RUN bundle exec rails assets:precompile
 
 RUN rm -r node_modules
 
