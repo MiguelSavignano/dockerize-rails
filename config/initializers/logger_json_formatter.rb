@@ -5,6 +5,6 @@ class LoggerJsonFormatter < ActiveSupport::Logger::SimpleFormatter
     #   time: timestamp,
     #   message: message
     # }.to_json
-    message
+    "#{message}\n"
   end
 end
