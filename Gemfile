@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :production, :test do
-  gem 'stackdriver'
+  # gem 'stackdriver'
 end
 
 group :development, :test do
