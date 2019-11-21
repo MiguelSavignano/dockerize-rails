@@ -8,4 +8,7 @@ class ApplicationController < ActionController::Base
 
     render json: response
   end
+
+  def landing
+  end
 end
