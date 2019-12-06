@@ -1,16 +1,28 @@
 set -e
 
-IMAGE_NAME=devmasx/rails-sqlite
-SERVICE_NAME=rails-nginx
+# ===========COFIGURATION===============================
+#IMAGE_TAG=${GITHUB_SHA}
 IMAGE_TAG=`git rev-parse --short HEAD`
+SERVICE_NAME=rails-nginx
+IMAGE_NAME=gcr.io/docker-rails-258302/rails-sqlite
+POD_CONTAINER_NAME_1=rails
+# ==================================================
 
-docker build -t rails-sqlite -t $IMAGE_NAME -t $IMAGE_NAME:$IMAGE_TAG .
+gcloud auth configure-docker
 
-docker push $IMAGE_NAME
-docker push $IMAGE_NAME:$IMAGE_TAG
+docker pull ${IMAGE_NAME} || exit 0
 
-echo  $IMAGE_NAME:$IMAGE_TAG
+docker build \
+  --cache-from=${IMAGE_NAME} \
+  -t ${IMAGE_NAME} \
+  -t ${IMAGE_NAME}:${IMAGE_TAG} \
+  .
+
+docker push ${IMAGE_NAME}
+docker push ${IMAGE_NAME}:${IMAGE_TAG}
+
+echo $IMAGE_NAME:${IMAGE_TAG}
 
 if [ "$1" == "--deploy" ]; then
-  kubectl set image deployment/$SERVICE_NAME rails=$IMAGE_NAME:$IMAGE_TAG
+  kubectl set image deployment/$SERVICE_NAME ${POD_CONTAINER_NAME_1}=${IMAGE_NAME}:${IMAGE_TAG}
 fi
