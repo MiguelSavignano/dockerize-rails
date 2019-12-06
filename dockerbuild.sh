@@ -2,15 +2,15 @@ set -e
 
 IMAGE_NAME=devmasx/rails-sqlite
 SERVICE_NAME=rails-nginx
-GIT_HASH=`git rev-parse --short HEAD`
+IMAGE_TAG=`git rev-parse --short HEAD`
 
-docker build -t rails-sqlite -t $IMAGE_NAME -t $IMAGE_NAME:$GIT_HASH .
+docker build -t rails-sqlite -t $IMAGE_NAME -t $IMAGE_NAME:$IMAGE_TAG .
 
 docker push $IMAGE_NAME
-docker push $IMAGE_NAME:$GIT_HASH
+docker push $IMAGE_NAME:$IMAGE_TAG
 
-echo  $IMAGE_NAME:$GIT_HASH
+echo  $IMAGE_NAME:$IMAGE_TAG
 
 if [ "$1" == "--deploy" ]; then
-  kubectl set image deployment/$SERVICE_NAME rails=$IMAGE_NAME:$GIT_HASH
+  kubectl set image deployment/$SERVICE_NAME rails=$IMAGE_NAME:$IMAGE_TAG
 fi
