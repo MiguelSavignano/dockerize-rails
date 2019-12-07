@@ -16,7 +16,7 @@ jobs:
           version: "271.0.0"
           service_account_key: ${{ secrets.GCP_SA_KEY }}
       - run: gcloud auth configure-docker
-      - uses: devmasx/cached-docker-build-push@master
+      - uses: devmasx/cached-docker-build-push@v0.1.0
         with:
           image_name: gcr.io/docker-rails-258302/rails-sqlite
           cache_stage_target: development
