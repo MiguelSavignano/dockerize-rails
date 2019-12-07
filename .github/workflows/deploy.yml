@@ -1,4 +1,4 @@
-name: deploy to k8s
+name: deploy to k8s with cache
 
 on:
   push:
