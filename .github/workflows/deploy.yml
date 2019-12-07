@@ -15,7 +15,6 @@ jobs:
         with:
           version: "271.0.0"
           service_account_key: ${{ secrets.GCP_SA_KEY }}
-      # - run: ./dockerbuild.sh
       - run: gcloud auth configure-docker
       - uses: devmasx/docker-build-cache@master
         with:
