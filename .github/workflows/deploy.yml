@@ -17,7 +17,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
       # - run: ./dockerbuild.sh
       - run: gcloud auth configure-docker
-      - uses: devmasx/dockerbuild-gcloud@master
+      - uses: devmasx/docker-build-cache@master
         with:
           image_name: gcr.io/docker-rails-258302/rails-sqlite
           cache_image_name: gcr.io/docker-rails-258302/rails-sqlite--builder
