@@ -21,4 +21,4 @@ jobs:
         with:
           image_name: gcr.io/docker-rails-258302/rails-sqlite
           cache_image_name: gcr.io/docker-rails-258302/rails-sqlite--builder
-          cache_build_target: development
+          cache_stage_target: development
