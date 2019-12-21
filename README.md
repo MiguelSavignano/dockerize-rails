@@ -21,3 +21,5 @@ kubectl apply -f kubernetes/rails-nginx.yaml
 ```
 kubectl set image deployment/rails-nginx rails=devmasx/devmasx/rails-sqlite:latest
 ```
+
+.
