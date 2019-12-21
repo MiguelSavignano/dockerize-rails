@@ -2,8 +2,6 @@
 # ******Build base stage******
 # ****************************
 
-FROM node:10.16.3-slim as nodejs
-
 FROM ruby:2.6.3-slim as development
 
 # Install common libs
@@ -17,9 +15,9 @@ RUN apt-get update -qq && apt-get install -y \
 RUN apt-get install -y sqlite3 libsqlite3-dev
 # Install Nodejs
 ENV NODE_VERSION=10.16.3
-COPY --from=nodejs /usr/local/bin/ /usr/local/bin/
-COPY --from=nodejs /usr/local/lib/ /usr/local/lib/
-COPY --from=nodejs /opt/yarn-v1.17.3/ /opt/yarn-v1.17.3/
+COPY --from=node:10.16.3-slim /usr/local/bin/ /usr/local/bin/
+COPY --from=node:10.16.3-slim /usr/local/lib/ /usr/local/lib/
+COPY --from=node:10.16.3-slim /opt/yarn-v1.17.3/ /opt/yarn-v1.17.3/
 
 WORKDIR /app
 
@@ -67,7 +65,7 @@ ENV NODE_ENV=production RAILS_ENV=production RAILS_LOG_TO_STDOUT=true
 
 # Install system dependencies
 
-COPY --from=nodejs /usr/local/ /usr/local/
+COPY --from=node:10.16.3-slim /usr/local/ /usr/local/
 
 RUN apt-get update -qq && apt-get install -y \
   sqlite3 libsqlite3-dev \
