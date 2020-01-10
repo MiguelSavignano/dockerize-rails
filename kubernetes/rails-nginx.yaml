@@ -32,7 +32,7 @@ spec:
       containers:
         # - image: devmasx/nginx-rails-sqlite
         #   name: nginx
-        - image: devmasx/rails-sqlite
+        - image: gcr.io/docker-rails-258302/rails-sqlite
           name: rails
           env:
             - name: SECRET_KEY_BASE
