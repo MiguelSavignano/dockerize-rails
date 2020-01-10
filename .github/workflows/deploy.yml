@@ -26,7 +26,7 @@ jobs:
 
       - uses: devmasx/cached-docker-build-push@master
         with:
-          image_name: $IMAGE
+          image_name: gcr.io/docker-rails-258302/rails-sqlite
 
       - name: Deploy K8s
         run: |
