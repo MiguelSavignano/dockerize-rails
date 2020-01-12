@@ -2,6 +2,8 @@ name: Apply yml config
 
 on:
   push:
+    paths:
+      - "kubernetes/**/*"
     branches:
       - "gcloud-k8s-logstash"
 env:
