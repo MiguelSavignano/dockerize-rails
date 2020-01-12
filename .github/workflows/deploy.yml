@@ -1,19 +1,19 @@
-name: deploy to k8s with cache
+name: Build image and deploy to k8s
 
 on:
   push:
     branches:
-      - "gcloud-k8s"
+      - "gcloud-k8s-logstash"
 env:
   GCP_PROJECT: docker-rails-258302
   GKE_ZONE: us-central1-a
   GKE_CLUSTER: docker-rails-cluster
-  IMAGE: gcr.io/docker-rails-258302/rails-sqlite
-  SERVICE_DEPLOYMENT: deployment/rails-nginx
+  IMAGE: gcr.io/docker-rails-258302/rails-logstash
+  SERVICE_DEPLOYMENT: deployment/rails-logstash
   CONTAINER_1: rails
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -26,10 +26,22 @@ jobs:
 
       - uses: devmasx/cached-docker-build-push@master
         with:
-          image_name: gcr.io/docker-rails-258302/rails-sqlite
-
-      - name: Deploy K8s
-        run: |
-          gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GCP_PROJECT
-          kubectl set image $SERVICE_DEPLOYMENT $CONTAINER_1=$IMAGE:$GITHUB_SHA
-          kubectl rollout status $SERVICE_DEPLOYMENT
+          image_name: gcr.io/docker-rails-258302/rails-logstash
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+  #       with:
+  #         version: "271.0.0"
+  #         service_account_key: ${{ secrets.GCP_SA_KEY }}
+  #     - run: gcloud auth configure-docker
+  #     - uses: devmasx/cached-docker-build-push@master
+  #       with:
+  #         image_name: gcr.io/docker-rails-258302/rails-sqlite
+  #     - name: Deploy K8s
+  #       run: |
+  #         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GCP_PROJECT
+  #         kubectl set image $SERVICE_DEPLOYMENT $CONTAINER_1=$IMAGE:$GITHUB_SHA
+  #         kubectl rollout status $SERVICE_DEPLOYMENT

@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: rails-nginx
+  name: rails-logstash
 spec:
   type: LoadBalancer
   ports:
@@ -9,7 +9,7 @@ spec:
       protocol: TCP
       targetPort: 3000
   selector:
-    app: rails-nginx
+    app: rails-logstash
 status:
   loadBalancer: {}
 ---
@@ -17,22 +17,22 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   labels:
-    app: rails-nginx
-  name: rails-nginx
+    app: rails-logstash
+  name: rails-logstash
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: rails-nginx
+      app: rails-logstash
   template:
     metadata:
       labels:
-        app: rails-nginx
+        app: rails-logstash
     spec:
       containers:
         # - image: devmasx/nginx-rails-sqlite
         #   name: nginx
-        - image: gcr.io/docker-rails-258302/rails-sqlite
+        - image: gcr.io/docker-rails-258302/rails-logstash
           name: rails
           env:
             - name: SECRET_KEY_BASE

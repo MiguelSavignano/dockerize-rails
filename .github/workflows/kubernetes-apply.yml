@@ -1,0 +1,27 @@
+name: Apply yml config
+
+on:
+  push:
+    branches:
+      - "gcloud-k8s-logstash"
+env:
+  GCP_PROJECT: docker-rails-258302
+  GKE_ZONE: us-central1-a
+  GKE_CLUSTER: docker-rails-cluster
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: "271.0.0"
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+      - run: gcloud auth configure-docker
+
+      - name: Deploy K8s
+        run: |
+          gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GCP_PROJECT
+          kubectl apply -f kubernetes/rails-logstash.yaml
