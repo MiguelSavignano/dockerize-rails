@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     Rails.logger.info response
     Rails.logger.info response.to_json
 
-    render json: response
+    render json: { service: 'rails-k8s-logstash', response: response}
   end
 
   def landing

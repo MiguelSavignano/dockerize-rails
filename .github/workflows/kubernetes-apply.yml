@@ -21,7 +21,7 @@ jobs:
 
       - run: gcloud auth configure-docker
 
-      - name: Deploy K8s
+      - name: Apply k8s config
         run: |
           gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GCP_PROJECT
           kubectl apply -f kubernetes/rails-logstash.yaml
