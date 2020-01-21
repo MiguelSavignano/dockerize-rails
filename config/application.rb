@@ -27,6 +27,15 @@ module DockerizeRails
         params: params,
       }
     end
+
+    config.lograge.custom_payload do |controller|
+      {
+        host: controller.request.host,
+        request_id: controller.request.uuid
+      }
+    end
+
+    config.middleware.insert_after ActionDispatch::RequestId, RequestIdLogging::Middleware
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

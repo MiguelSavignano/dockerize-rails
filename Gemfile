@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'ougai'
 gem "lograge"
+gem 'request_id_logging'
 
 group :production, :test do
   # gem 'stackdriver'
