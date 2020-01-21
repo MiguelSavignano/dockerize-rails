@@ -16,7 +16,7 @@ class JsonFormatter < ::Logger::Formatter
       name: ENV['SERVICE_NAME'] || program_name,
       # hostname: ENV['SERVICE_HOSTNAME'] || '',
       # pid: $$,
-      level: severity,
+      severity: severity,
       time: time.to_i,
       message: parse_message(message),
       # v: 1
