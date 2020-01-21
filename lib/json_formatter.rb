@@ -25,7 +25,7 @@ class JsonFormatter < ::Logger::Formatter
       # pid: $$,
       severity: severity,
       time: time.to_i,
-      request_id: request_id
+      request_id: request_id,
       message: parse_message(message),
       # v: 1
     }
