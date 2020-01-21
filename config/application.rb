@@ -1,7 +1,6 @@
 require_relative 'boot'
 
 require 'rails/all'
-require 'json_formatter'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -17,7 +16,6 @@ module DockerizeRails
     # config.logger = Ougai::Logger.new(STDOUT)
     config.lograge.enabled = true
     config.lograge.formatter = Lograge::Formatters::Json.new
-    config.log_formatter = Ougai::Formatters::Pino.new
 
 
     # Settings in config/environments/* take precedence over those specified here.
