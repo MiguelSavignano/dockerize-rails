@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "application#index"
-  get "/app" => "application#landing"
+  get "/error" => "application#error"
+  get "/error_log" => "application#error_log"
 end

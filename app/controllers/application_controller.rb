@@ -9,6 +9,17 @@ class ApplicationController < ActionController::Base
     render json: response
   end
 
-  def landing
+  def error
+    params.raise_error
+    render json: {}
+  end
+
+  def error_log
+    params.raise_error
+
+    render json: {}
+  rescue StandardError => e
+    Rails.logger.error e
+    render json: {}
   end
 end
