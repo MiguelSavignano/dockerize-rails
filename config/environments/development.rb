@@ -1,4 +1,3 @@
-require 'json_formatter'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -56,7 +55,6 @@ Rails.application.configure do
   config.assets.quiet = true
 
     # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = JsonFormatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
