@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-require_relative '../lib/json_formatter'
+require_relative '../lib/logger_json'
 
 module DockerizeRails
   class Application < Rails::Application
@@ -19,7 +19,7 @@ module DockerizeRails
     config.lograge.enabled = true
     config.lograge.formatter = Lograge::Formatters::Json.new
     config.colorize_logging = false
-    config.log_formatter = JsonFormatter.new
+    config.log_formatter = LoggerJson::Formatter.new
 
     config.lograge.custom_options = lambda do |event|
       params = event.payload[:params].reject { |k| %w(controller action).include?(k) }
@@ -35,7 +35,7 @@ module DockerizeRails
       }
     end
 
-    config.middleware.insert_after ActionDispatch::RequestId, RequestIdLogging::Middleware
+    config.middleware.insert_after ActionDispatch::RequestId, LoggerJson::Middleware
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
