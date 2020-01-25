@@ -23,3 +23,4 @@ kubectl set image deployment/rails-nginx rails=devmasx/devmasx/rails-sqlite:late
 ```
 
 .
+.
