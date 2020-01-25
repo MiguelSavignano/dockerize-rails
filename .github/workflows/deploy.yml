@@ -22,6 +22,7 @@ jobs:
           version: "271.0.0"
           service_account_key: ${{ secrets.GCP_SA_KEY }}
 
+      - run: echo 'Hello'
       - run: gcloud auth configure-docker
 
       - uses: devmasx/cached-docker-build-push@master
